@@ -1,0 +1,13 @@
+package Waits;
+
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class ImplecitWaitEg {
+
+	public static void main(String[] args) {
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		
+	}
+
+}

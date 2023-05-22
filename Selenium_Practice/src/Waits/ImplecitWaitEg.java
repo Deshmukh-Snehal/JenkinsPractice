@@ -1,0 +1,29 @@
+package Waits;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ImplecitWaitEg {
+	public static void main(String[] args) {
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.get("https://www.google.com/");
+		//ImplicitlyWait Syntax
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement search = driver.findElement(By.xpath("//textarea[@title='Search']"));
+		search.sendKeys("Selenium");
+		search.sendKeys(Keys.RETURN);
+		driver.findElement(By.xpath("//h3[text()='Selenium']")).click();
+		driver.close();
+	}
+}

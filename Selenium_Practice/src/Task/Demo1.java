@@ -1,0 +1,32 @@
+package Task;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Demo1 {
+	public static void main(String[] args) throws Exception {
+		ChromeOptions co=new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver(co);
+		driver.get("https://www.youtube.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//input[@id='search']")).sendKeys("Testing");
+		WebElement video = driver.findElement(By.xpath("(//yt-formatted-string[@id='video-title'])[1]"));
+		video.click();
+		WebElement mainMenu = driver.findElement(By.xpath("//div[@id='movie_player']//div[@class='html5-video-container']//descendant::video[@class='video-stream html5-main-video']"));
+		WebElement maxButton = driver.findElement(By.xpath("//button[@title='Full screen (f)']"));
+		Actions action = new Actions(driver);
+		action.moveToElement(mainMenu).perform();
+		action.click(maxButton).perform();
+		Thread.sleep(5000);
+		driver.close();
+	}
+}

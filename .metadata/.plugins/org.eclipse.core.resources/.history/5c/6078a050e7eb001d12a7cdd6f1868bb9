@@ -1,0 +1,17 @@
+package Waits;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ExplicitlyWait {
+
+	public static void main(String[] args) {
+		ChromeOptions co = new ChromeOptions();
+		 WebDriverManager.chromedriver().setup();
+		 WebDriver driver = new ChromeDriver(co);
+		 
+	}
+
+}
